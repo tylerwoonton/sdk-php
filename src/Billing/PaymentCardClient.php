@@ -106,8 +106,6 @@ class PaymentCardClient extends BaseClient
      */
     protected function serializePaymentCard($item)
     {
-        $paymentCard = new PaymentCard($this->apiToFriendly($item, self::MAP));
-
-        return $paymentCard;
+        return new PaymentCard($this->apiToFriendly($item, self::MAP));
     }
 }

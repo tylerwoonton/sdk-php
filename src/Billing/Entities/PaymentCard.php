@@ -13,18 +13,16 @@ use DateTime;
  * @property string $postcode
  * @property string $cardNumber
  * @property string $cardType
- * @property DateTime $validFrom
- * @property DateTime $expiry
+ * @property string $validFrom
+ * @property string $expiry
  * @property int $issueNumber
  * @property boolean $primaryCard
  */
 class PaymentCard extends Entity
 {
-    protected $dates = ['validFrom', 'expiry'];
-
     public function isExpired()
     {
-        return $this->expiry < new DateTime();
+        return DateTime::createFromFormat(DATE_ISO8601, $this->expiry) < new DateTime();
     }
 
     public function isNotExpired()
